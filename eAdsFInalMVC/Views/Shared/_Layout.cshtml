@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- viewport meta -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+
+    <title>eAds - MarketPlace</title>
+
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Favicon -->
+    <link rel="icon" type="~/Content/image/png" sizes="16x16" href="~/Content/images/favicon.png">
+    <!-- Latest compiled and minified CSS -->
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+
+<body class="preload signup-page">
+
+    <!--================================
+        START MENU AREA
+    =================================-->
+    <!-- start menu-area -->
+    <div class="menu-area">
+        <!-- start .top-menu-area -->
+        <div class="top-menu-area">
+            <!-- start .container -->
+            <div class="container">
+                <!-- start .row -->
+                <div class="row">
+                    <!-- start .col-md-3 -->
+                    <div class="col-lg-3 col-md-3 col-6 v_middle">
+                        <div class="logo">
+                            <a href="index.html">
+                                <img src="~/Content/images/logo.png" alt="logo image" class="img-fluid">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end /.col-md-3 -->
+
+
+                </div>
+                <!-- end /.row -->
+            </div>
+            <!-- end /.container -->
+        </div>
+        <!-- end  -->
+        <!-- start .mainmenu_area -->
+        <div class="mainmenu">
+            <!-- start .container -->
+            <div class="container">
+                <!-- start .row-->
+                <div class="row">
+                    <!-- start .col-md-12 -->
+                    <div class="col-md-12">
+
+
+                        <nav class="navbar navbar-expand-md navbar-light mainmenu__menu">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                                    aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <li class="has_dropdown">
+                                        <a href="/Home">HOME</a>
+
+                                    </li>
+
+                                    <!--<li class="has_dropdown">
+                                        <a href="aboutus.aspx">About US</a>
+
+                                    </li>-->
+
+                                    <li class="has_dropdown">
+                                        <a href="/Product/index">Products</a>
+
+                                    </li>
+
+
+                                    <!--<li class="has_dropdown">
+                                        <a href="single-product.aspx">Products Single</a>
+
+                                    </li>-->
+                                    <!--<li class="has_dropdown">
+                                        <a href="productUpload.aspx">Products Upload</a>
+
+                                    </li>-->
+                                    <!--<li class="has_dropdown">
+                                        <a href="contactus.aspx">Contact Us</a>
+
+                                    </li>-->
+
+
+                                    <li class="has_dropdown">
+                                        <a href="/Customer/Profile">Customer Profile</a>
+
+                                    </li>
+
+
+
+                                     @Html.Partial("_LoginPartial")
+                               
+
+                                </ul>
+                            </div>
+                            <!-- /.navbar-collapse -->
+                        </nav>
+                    </div>
+                    <!-- end /.col-md-12 -->
+                </div>
+                <!-- end /.row-->
+            </div>
+            <!-- start .container -->
+        </div>
+        <!-- end /.mainmenu-->
+    </div>
+    <!-- end /.menu-area -->
+    <!--================================
+        END MENU AREA
+    =================================-->
+    @*<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>@ViewBag.Title - My ASP.NET Application</title>
+            @Styles.Render("~/Content/css")
+            @Scripts.Render("~/bundles/modernizr")
+        </head>
+        <body>
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container body-content">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                </footer>
+            </div>*@
+
+
+<div class=" body-content">
+    @RenderBody()
+    @RenderSection("SPAViews", required: false)
+</div>
+
+
+    <!--================================
+        START FOOTER AREA
+    =================================-->
+    <footer class="footer-area">
+
+
+        <div class="mini-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="copyright-text">
+                            <p>
+                                &copy; @DateTime.Now.Year
+                                <a href="#">eAds</a>. All rights reserved. Created by
+                                <a href="#">Harsh Ranpariya | Rahul Pipaliya</a>
+                            </p>
+                        </div>
+
+                        <div class="go_top">
+                            <span class="lnr lnr-chevron-up"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--================================
+        END FOOTER AREA
+    =================================-->
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0C5etf1GVmL_ldVAichWwFFVcDfa1y_c"></script>
+    <!-- inject:js -->
+    <!-- endinject -->
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/main")
+
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>
+ 
