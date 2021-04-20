@@ -517,6 +517,7 @@
     </Content>
     <Content Include="Scripts\knockout.validation.min.js.map" />
     <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\SingleProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

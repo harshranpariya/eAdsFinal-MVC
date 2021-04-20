@@ -16,5 +16,14 @@ namespace eAdsFInalMVC.Controllers
             var product = context.product.ToList();
             return View(product);
         }
+
+
+        [HttpGet]
+        public ActionResult SingleProduct(int id)
+        {
+            DatabaseContext context = new DatabaseContext();
+            var sigleProduct = context.product.Single(x => x.pId == id);
+            return View(sigleProduct);
+        }
     }
 }

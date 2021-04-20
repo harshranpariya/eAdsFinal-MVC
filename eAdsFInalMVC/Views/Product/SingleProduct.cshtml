@@ -1,0 +1,109 @@
+﻿@model eAdsFInalMVC.Models.product
+
+@{
+    ViewBag.Title = "SingleProduct";
+}
+
+
+ 
+
+<!--============================================
+        START SINGLE PRODUCT DESCRIPTION AREA
+    ==============================================-->
+<section class="single-product-desc single-product-desc2">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="item-preview item-preview2">
+                    <div class="prev-slide">
+                        <img src="~/Content/images/itprv2.jpg" alt="Keep calm this isn't the end of the world, the preview is just missing.">
+                    </div>
+
+
+                    <div class="tab tab2">
+                        <div class="item-navigation">
+                            <ul class="nav nav-tabs nav--tabs2">
+                                <li>
+                                    <a href="single-product-v3.html#product-details" class="active" aria-controls="product-details" role="tab" data-toggle="tab">Item Details</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <!-- end /.item-navigation -->
+
+                        <div class="tab-content">
+                            <div class="tab-pane product-tab fade show active" id="product-details">
+                                <h1>@Model.pName</h1>
+                                <p>
+
+                                   @Model.pDescription
+                                </p>
+
+
+                            </div>
+                            <!-- end /.tab-content -->
+
+
+                        </div>
+                        <!-- end /.tab-content -->
+                    </div>
+                    <!-- end /.item-info -->
+                </div>
+                <!-- end /.item-preview-->
+            </div>
+            <!-- end /.col-md-8 -->
+
+            <div class="col-lg-4">
+                <aside class="sidebar sidebar--single-product">
+                    <div class="sidebar-card card-pricing">
+                        <div class="price">
+                            <h1>
+                                <sup> CAD $</sup>
+                                <span>@Model.pPrice </span>
+                            </h1>
+                        </div>
+                        <form runat="server">
+                            <div class="purchase-button">
+                                @*<asp:button runat="server" id="purchaseBtn" class="btn btn--lg btn--round" Text="Purchase Now" OnClick="purchaseBtn_Click" />*@
+                                @Html.ActionLink("Purchase Now", "Purchase/"+@Model.pId, "Product",null,new { @class = "btn btn--lg btn--round",@id = "purchaseBtn" })
+
+
+                            </div>
+                        </form>
+                        <!-- end /.purchase-button -->
+                    </div>
+                    <!-- end /.sidebar--card -->
+
+
+                    <div class="sidebar-card card--product-infos">
+                        <div class="card-title">
+                            <h4>Product Information</h4>
+                        </div>
+
+                        <ul class="infos">
+                            <li>
+                                <p class="data-label">Published Date</p>
+                                <p class="info">16 Feb 2021</p>
+                            </li>
+
+
+                            <li>
+                                <p class="data-label">Owner Name</p>
+                                <p class="info">@Model.ownerid </p>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!-- end /.aside -->
+                </aside>
+                <!-- end /.aside -->
+            </div>
+            <!-- end /.col-md-4 -->
+        </div>
+        <!-- end /.row -->
+    </div>
+    <!-- end /.container -->
+</section>
+<!--===========================================
+    END SINGLE PRODUCT DESCRIPTION AREA
+===============================================-->
