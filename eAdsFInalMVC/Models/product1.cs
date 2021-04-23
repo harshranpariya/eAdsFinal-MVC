@@ -8,7 +8,7 @@ using System.Web;
 namespace eAdsFInalMVC.Models
 {
     [Table("product")]
-    public class product
+    public class product1
     {
         [Key]
          public int pId { get; set; }
@@ -19,7 +19,7 @@ namespace eAdsFInalMVC.Models
 
             public Decimal pPrice { get; set; }
 
-        public int ownerid { get; set; }
+        public string ownerid { get; set; }
         public Boolean? status { get; set; }
         }
 }

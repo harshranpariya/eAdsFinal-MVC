@@ -1,9 +1,9 @@
-﻿@model eAdsFInalMVC.Models.ChangePasswordViewModel
+﻿@model IEnumerable<eAdsFInalMVC.Models.product1>
+
 @{
-    ViewBag.Title = "Change Password";
+    ViewBag.Title = "Product";
 }
-
-
+ 
 <section class="breadcrumb-area">
     <div class="container">
         <div class="row">
@@ -73,39 +73,71 @@
     <section class="products section--padding">
         <!-- start container -->
         <div class="container">
-            @using (Html.BeginForm("ChangePassword", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <h4>Change Password Form</h4>
-                <hr />
-                @Html.ValidationSummary("", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.OldPassword, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.OldPassword, new { @class = "form-control" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.NewPassword, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.NewPassword, new { @class = "form-control" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Change password" class="btn btn-default" />
-                    </div>
-                </div>
-            }
 
-            </div>
-        </section>
-            @section Scripts {
-                @Scripts.Render("~/bundles/jqueryval")
-            }
+
+            <p>
+                @Html.ActionLink("Create New", "CreateProduct")
+            </p>
+            <table class="table">
+                <tr>
+                    <th>
+                        #
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.pName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.pCategory)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.pDescription)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.pPrice)
+                    </th>
+
+                    <th></th>
+                </tr>
+                @{
+                    var count = 1;
+
+                }
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @count
+                            @{
+                                count++;
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.pName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.pCategory)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.pDescription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.pPrice)
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.pId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.pId })
+                            @*@using (Html.BeginForm("Delete", "Product", new { @id = item.pId }))
+                                {
+                                    <input type="submit" value="delete" onclick="return confirm('Are you sure to delete with id = @item.pId');" />
+                                }*@
+
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+        </div>
+    </section>

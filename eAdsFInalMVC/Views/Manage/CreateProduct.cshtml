@@ -1,0 +1,144 @@
+﻿@model eAdsFInalMVC.Models.product1
+
+@{
+    ViewBag.Title = "CreateProduct";
+}
+
+<section class="breadcrumb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="breadcrumb">
+                    <ul>
+                        <li>
+                            <a href="/index">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Customer Info</a>
+                        </li>
+                    </ul>
+                </div>
+                <h1 class="page-title">Customer Info</h1>
+            </div>
+            <!-- end /.col-md-12 -->
+        </div>
+        <!-- end /.row -->
+    </div>
+    <!-- end /.container -->
+</section>
+<!--================================
+    END BREADCRUMB AREA
+=================================-->
+<!--================================
+           START DASHBOARD AREA
+   =================================-->
+<section class="dashboard-area">
+    <div class="dashboard_menu_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="dashboard_menu">
+                        <li>
+                            <a href="~/Manage/Profile">
+                                <span class="lnr lnr-user"></span>Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a href="~/Manage/Product">
+                                <span class="lnr lnr-gift"></span> List Products
+                            </a>
+                        </li>
+                        <li>
+                            <a href="~/Manage/CreateProduct">
+                                <span class="lnr lnr-gift"></span> Create Product
+                            </a>
+                        </li>
+                        <li>
+                            <a href="~/Manage/ChangePassword">
+                                <span class="lnr lnr-gift"></span> Change Password
+                            </a>
+                        </li>
+
+                    </ul>
+                    <!-- end /.dashboard_menu -->
+                </div>
+                <!-- end /.col-md-12 -->
+            </div>
+            <!-- end /.row -->
+        </div>
+        <!-- end /.container -->
+    </div>
+    </div>
+
+    <section class="products section--padding">
+        <!-- start container -->
+        <div class="container">
+
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>product</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.pName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.pName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.pName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.pCategory, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.pCategory, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.pCategory, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.pDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.pDescription, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.pDescription, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.pPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.pPrice, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.pPrice, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                  
+                    
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.status, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.status, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+            
+
+            </div>
+        </section>
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }

@@ -4,9 +4,12 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using eAdsFInalMVC.Models;
+ 
 
 namespace eAdsFInalMVC.Controllers
 {
@@ -331,6 +334,151 @@ namespace eAdsFInalMVC.Controllers
             }
 
             base.Dispose(disposing);
+        }
+
+
+
+        public ActionResult Product()
+        {
+            ViewBag.userId = User.Identity.GetUserId();
+
+            DatabaseContext context = new DatabaseContext();
+            var p = context.product.ToList();
+            return View(p);
+        }
+
+         
+        public ActionResult ProductDetail(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            DatabaseContext context = new DatabaseContext();
+
+            product1 p = context.product.Find(id);
+            if (p == null)
+            {
+                return HttpNotFound();
+            }
+            return View(p);
+        }
+        [HttpGet]
+        public ActionResult CreateProduct()
+        {
+            ViewBag.uid = User.Identity.GetUserId();
+
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult CreateProduct(product1 p)
+        {
+
+            if (ModelState.IsValid)
+            {
+                DatabaseContext context = new DatabaseContext();
+                p.ownerid = User.Identity.GetUserId(); 
+                context.product.Add(p);
+                context.SaveChanges();
+                return RedirectToAction("./");
+            }
+            else
+            {
+                return View();
+            }
+
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            DatabaseContext context = new DatabaseContext();
+            var p = context.product.Single(x => x.pId == id);
+            return View(p);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(product1 p)
+        {
+            if (ModelState.IsValid)
+            {
+                DatabaseContext context = new DatabaseContext();
+                var updateProduct = context.product.Find(p.pId);
+                updateProduct.pName = p.pName;
+                updateProduct.pCategory = p.pCategory;
+                updateProduct.pDescription = p.pDescription;
+                updateProduct.pPrice = p.pPrice;
+                updateProduct.status = p.status;
+
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        //[HttpGet]
+        //public ActionResult Delete(int id)
+        //{
+        //    DatabaseContext context = new DatabaseContext();
+        //    var p = context.product.Single(x => x.pId == id);
+        //    return View(p);
+        // }
+
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            if (ModelState.IsValid)
+            {
+                var context = new DatabaseContext();
+                var p = context.product.Single(x => x.pId == id);
+                context.product.Remove(p);
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Profile()
+        {
+            string id = User.Identity.GetUserId();
+            DatabaseContext context = new DatabaseContext();
+            var dep = context.customers.Single(x => x.Id == id);
+            return View(dep);
+        }
+
+        [HttpPost]
+        public ActionResult Profile(customer1 c)
+        {
+            if (ModelState.IsValid)
+            {
+                var context = new DatabaseContext();
+                var cust = context.customers.Find(c.Id);
+                cust.cName = c.cName;
+                cust.cEmail = c.cEmail;
+                cust.cAddress = c.cAddress;
+                cust.cCity = c.cCity;
+                cust.cZip = c.cZip;
+                cust.cCountry = c.cCountry;
+                cust.cProvince = c.cProvince;
+
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         #region Helpers

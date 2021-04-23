@@ -85,7 +85,7 @@ namespace eAdsFInalMVC.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Display(Name = "PneNumber")]
+        [Display(Name = "PhoneNumber")]
         public string PhoneNumber { get; set; }
     }
 

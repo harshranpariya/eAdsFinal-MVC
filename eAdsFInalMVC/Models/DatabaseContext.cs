@@ -8,7 +8,7 @@ namespace eAdsFInalMVC.Models
 {
     public class DatabaseContext : DbContext
     {
-        public DbSet<customer> customers { get; set; }
-        public DbSet<product> product { get; set; }
+        public DbSet<customer1> customers { get; set; }
+        public DbSet<product1> product { get; set; }
     }
 }

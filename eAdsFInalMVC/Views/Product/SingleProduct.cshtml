@@ -1,4 +1,4 @@
-﻿@model eAdsFInalMVC.Models.product
+﻿@model eAdsFInalMVC.Models.product1
 
 @{
     ViewBag.Title = "SingleProduct";
@@ -32,15 +32,16 @@
                         <!-- end /.item-navigation -->
 
                         <div class="tab-content">
-                            <div class="tab-pane product-tab fade show active" id="product-details">
-                                <h1>@Model.pName</h1>
-                                <p>
+                            <h3>Product Name : @Model.pName</h3>
+                            <br />
+                            <h3>Description : </h3>
+                            <br />
+                            <p>
 
-                                   @Model.pDescription
-                                </p>
+                                @Model.pDescription
+                            </p>
 
-
-                            </div>
+                           
                             <!-- end /.tab-content -->
 
 
@@ -89,7 +90,9 @@
 
                             <li>
                                 <p class="data-label">Owner Name</p>
-                                <p class="info">@Model.ownerid </p>
+                                
+                              
+                            <p class="info">  @ViewBag.username </p>
                             </li>
 
                         </ul>

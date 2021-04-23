@@ -14,7 +14,12 @@ namespace eAdsFInalMVC.Controllers
         {
             DatabaseContext context = new DatabaseContext();
             var product = context.product.ToList();
-            return View(product);
+
+            var lst = new ProductOwner();
+            lst.lstOwner = getCustomer();
+            lst.lstProduct = getProduct();
+
+            return View(lst);
         }
 
 
@@ -23,7 +28,21 @@ namespace eAdsFInalMVC.Controllers
         {
             DatabaseContext context = new DatabaseContext();
             var sigleProduct = context.product.Single(x => x.pId == id);
+            var user = context.customers.Single(x => x.Id == sigleProduct.ownerid);
+            ViewBag.username = user.cName;
             return View(sigleProduct);
+        }
+
+        public List<product1> getProduct()
+        {
+            DatabaseContext context = new DatabaseContext();
+            return context.product.ToList();
+        }
+
+        public List<customer1> getCustomer()
+        {
+            DatabaseContext context = new DatabaseContext();
+            return context.customers.ToList();
         }
     }
 }

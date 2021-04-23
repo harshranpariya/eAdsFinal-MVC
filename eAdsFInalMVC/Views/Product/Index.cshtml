@@ -1,9 +1,9 @@
-﻿@model List<eAdsFInalMVC.Models.product>
+﻿@model eAdsFInalMVC.Models.ProductOwner
 
 @{
     ViewBag.Title = "Index";
-}
-
+    var username = "";
+ }
 
 
 <!--================================
@@ -52,10 +52,10 @@
 
 
         <div class="row">
-          @foreach (var product in Model)
+            @foreach (var product in Model.lstProduct)
             {
+               
 
-              
 
 
                 <div class="col-lg-4 col-md-6">
@@ -76,13 +76,28 @@
                                 <li>
                                     <img class="auth-img" src="~/Content/images/auth.jpg" alt="author image">
                                     <p>
-                                        <a href="index.html#">@product.ownerid)</a>
+                                        @{ 
+                                            foreach (var user in Model.lstOwner)
+                                            {
+                                                if (product.ownerid == user.Id)
+                                                {
+                                                    username = user.cName;
+                                                }
+
+                                            }
+
+                                        }
+                                        @username
+                                        
                                     </p>
                                 </li>
+                                <br />
+                                <br />
                                 <li class="product_cat">
-
-                                    <span class="lnr lnr-book"></span>@product.pCategory
                                     
+                                    Category :
+                                    <span class="lnr lnr-book"></span>@product.pCategory
+
                                 </li>
                             </ul>
 

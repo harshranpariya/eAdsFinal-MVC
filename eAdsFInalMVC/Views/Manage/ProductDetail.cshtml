@@ -1,0 +1,66 @@
+﻿@model eAdsFInalMVC.Models.product1
+
+@{
+    ViewBag.Title = "ProductDetail";
+}
+
+<h2>ProductDetail</h2>
+
+<div>
+    <h4>product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.pName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pCategory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pCategory)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ownerid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ownerid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.pId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
